@@ -136,7 +136,7 @@ public class OfflineBrowserActivity extends Activity implements OnKeyListener {
 		try {
 			String htmlData = loadTextFile(filename);
 			
-			webView.loadData(htmlData.toString(), mimeType, "utf-8");
+			webView.loadDataWithBaseURL("file://"+filename,htmlData.toString(), mimeType, "utf-8","file://"+filename);
 			history.add(filename);
 			inputEditText.setVisibility(View.GONE);
 		} catch (FileNotFoundException e) {
