@@ -1,0 +1,5 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+<item android:id="@+id/menu_open" android:title="@string/open"
+		android:alphabeticShortcut="@string/open" android:icon="@android:drawable/ic_menu_set_as"/>
+</menu>
