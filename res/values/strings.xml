@@ -2,7 +2,7 @@
 <resources>
     
     <string name="app_name">Offline Browser</string>
-    <string name="inputHint">Enter filename (e.g. /sdcard/foo.htm)</string>
+    <string name="inputHint">Enter filename</string>
     <string name="fileNotFound">File not found: %s</string>
     <string name="couldntLoadFile">Couldn't figure out how to handle file: %s</string>
     <string name="doesNotExist">Does Not Exist</string>
