@@ -9,11 +9,15 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.FileNameMap;
 import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Stack;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -68,6 +72,9 @@ public class OfflineBrowserActivity extends Activity implements OnKeyListener {
 	    case R.id.menu_open:
 	    	startOpenFileActivity();
 	    	break;
+	    case R.id.menu_history:
+	    	openHistory();
+	    	break;
 	    }
 	    return false;
 	}
@@ -77,6 +84,11 @@ public class OfflineBrowserActivity extends Activity implements OnKeyListener {
 	public boolean onPrepareOptionsMenu(Menu menu) {
 
 		inputEditText.setVisibility(View.VISIBLE);
+		
+		// disable history if there is none
+
+		menu.findItem(R.id.menu_history).setEnabled(history != null && history.size() > 1);
+
 		
 		return super.onPrepareOptionsMenu(menu);		
 	}
@@ -107,7 +119,30 @@ public class OfflineBrowserActivity extends Activity implements OnKeyListener {
 		
 		}
 	}
+	private void openHistory() {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
+		List<String> historyList = new ArrayList<String>(history);
+		
+		// shave off the last one in the history
+		historyList.remove(historyList.size() - 1);
+
+		
+		builder.setTitle(R.string.history);
+		builder.setItems(historyList.toArray(new CharSequence[historyList.size()]), new DialogInterface.OnClickListener() {
+		    public void onClick(DialogInterface dialog, int item) {
+		        while (history.size() > item + 1) {
+		        	history.pop();
+		        }
+		        handleUrl(history.pop());
+		    }
+		});
+		
+		AlertDialog alert = builder.create();
+		alert.show();
+
+	}
+	
 	private void startOpenFileActivity() {
 		Intent intent = new Intent(this, OpenFileActivity.class);
 		startActivityForResult(intent, 0);
