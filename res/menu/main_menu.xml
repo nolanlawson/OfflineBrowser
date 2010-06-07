@@ -4,5 +4,7 @@
 		android:alphabeticShortcut="@string/open" android:icon="@android:drawable/ic_menu_set_as"/>
 <item android:id="@+id/menu_history" android:title="@string/history"
 		android:alphabeticShortcut="@string/history" android:icon="@android:drawable/ic_menu_recent_history"/>		
-		
+<item android:id="@+id/menu_about" android:title="@string/about"
+		android:alphabeticShortcut="@string/about" android:icon="@android:drawable/ic_menu_info_details"/>	
+				
 </menu>

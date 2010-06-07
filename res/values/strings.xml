@@ -10,4 +10,6 @@
     <string name="openFile">Open File</string>
     <string name="noSdCard">SD card not found.</string>
     <string name="history">History</string>
+    <string name="aboutOfflineBrowser">About Offline Browser</string>
+    <string name="about">About</string>
 </resources>

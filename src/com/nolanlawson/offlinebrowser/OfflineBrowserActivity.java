@@ -75,9 +75,13 @@ public class OfflineBrowserActivity extends Activity implements OnKeyListener {
 	    case R.id.menu_history:
 	    	openHistory();
 	    	break;
+	    case R.id.menu_about:
+	    	startAboutActivity();
+	    	break;
 	    }
 	    return false;
 	}
+
 
 
 	@Override
@@ -133,8 +137,8 @@ public class OfflineBrowserActivity extends Activity implements OnKeyListener {
 		    public void onClick(DialogInterface dialog, int item) {
 		        while (history.size() > item + 1) {
 		        	history.pop();
+		        	webView.goBack();
 		        }
-		        handleUrl(history.pop());
 		    }
 		});
 		
@@ -149,6 +153,11 @@ public class OfflineBrowserActivity extends Activity implements OnKeyListener {
 		
 	}
 
+	private void startAboutActivity() {
+		Intent intent = new Intent(this, AboutActivity.class);
+		startActivity(intent);
+		
+	}
 	private void setUpWidgets() {
 		inputEditText = (EditText) findViewById(R.id.inputEditText);
 		webView = (WebView) findViewById(R.id.mainWebView);
