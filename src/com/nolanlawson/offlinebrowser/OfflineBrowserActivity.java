@@ -302,7 +302,8 @@ public class OfflineBrowserActivity extends Activity implements OnKeyListener {
 		if (url.startsWith("file://") && url.length() > 7) {
 			url = url.substring(7); // trim it off
 		}
-		
+		url = Uri.decode(url);
+
 		File file = new File(url);
 		
 		
