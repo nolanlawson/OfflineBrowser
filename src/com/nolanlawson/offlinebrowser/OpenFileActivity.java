@@ -83,7 +83,10 @@ public class OpenFileActivity extends ListActivity implements OnClickListener {
 
 	private void showFilesInDir(File dir) {
 		
-		List<File> fileList = new ArrayList<File>(Arrays.asList(dir.listFiles()));
+		File[] fileArray = dir.listFiles();
+		
+		List<File> fileList = fileArray != null 
+				? new ArrayList<File>(Arrays.asList(fileArray)) : Collections.<File>emptyList();
 		
 		Collections.sort(fileList, sortFilesByFolderThenName);
 		
