@@ -35,17 +35,16 @@ public class OpenFileActivity extends ListActivity implements OnClickListener {
 		setUpWidgets();
 		
 		// no sd card
-		if (Environment.getExternalStorageDirectory() == null) {
-			
+		if (! isExternalStorageAvailable()) {
 			Toast.makeText(getApplicationContext(), getResources().getString(R.string.noSdCard), Toast.LENGTH_LONG).show();
 			finish();
+		} else {
+			adapter = new FileListAdapter(getApplicationContext(), R.layout.file_item, new ArrayList<File>());
+			
+			setListAdapter(adapter);
+			
+			showFilesInDir(Environment.getExternalStorageDirectory());
 		}
-		adapter = new FileListAdapter(getApplicationContext(), R.layout.file_item, new ArrayList<File>());
-		
-		setListAdapter(adapter);
-		
-		showFilesInDir(Environment.getExternalStorageDirectory());
-		
 		
 	}
 	
@@ -55,15 +54,20 @@ public class OpenFileActivity extends ListActivity implements OnClickListener {
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
 		
-		File file = adapter.getItem(position);
-		
-		if (file instanceof DummyFile) {
-			// go up one dir; this is the ".." folder
-			showFilesInDir(currentDirectory.getParentFile());
-		} else if (file.isDirectory()) {
-			showFilesInDir(file);
+		if (! isExternalStorageAvailable()) {	
+			Toast.makeText(getApplicationContext(), getResources().getString(R.string.noSdCard), Toast.LENGTH_LONG).show();
+			finish();
 		} else {
-			editText.setText(file.getAbsolutePath());
+			File file = adapter.getItem(position);
+			
+			if (file instanceof DummyFile) {
+				// go up one dir; this is the ".." folder
+				showFilesInDir(currentDirectory.getParentFile());
+			} else if (file.isDirectory()) {
+				showFilesInDir(file);
+			} else {
+				editText.setText(file.getAbsolutePath());
+			}
 		}
 	}
 
@@ -71,14 +75,20 @@ public class OpenFileActivity extends ListActivity implements OnClickListener {
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event)  {
 	    if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-	    	// go up a level
-	    	if (!currentDirectory.equals(Environment.getExternalStorageDirectory())) {
-	    		showFilesInDir(currentDirectory.getParentFile());
-	    		return true;
-	    	}
+		// go up a level
+		if (!currentDirectory.equals(Environment.getExternalStorageDirectory())) {
+			showFilesInDir(currentDirectory.getParentFile());
+			return true;
+		}
 	    }
 
 	    return super.onKeyDown(keyCode, event);
+	}
+
+	private boolean isExternalStorageAvailable() {
+		String state = Environment.getExternalStorageState();
+
+		return state.equals(Environment.MEDIA_MOUNTED) || state.equals(Environment.MEDIA_MOUNTED_READ_ONLY);
 	}
 
 	private void showFilesInDir(File dir) {
