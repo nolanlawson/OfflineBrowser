@@ -9,10 +9,12 @@ License
 =======
 [WTFPL][1], although attribution would be nice.
 
-![Screenshot][2]
-
 Overview
 ========
-Offline Browser is a simple app for displaying HTML files in a WebView.  It is not very advanced and is only recommended for basic HTML files.
+The default Android browser currently can't read HTML files from the SD card.  I needed an app that could, so I wrote this one.
+
+It supports HTML, TXT, and PDF (assuming you already have a PDF reader app).
+
+This app is very simple and has barely any features.  If you'd like to make it better, fork it!
 
 [1]: http://sam.zoy.org/wtfpl/
