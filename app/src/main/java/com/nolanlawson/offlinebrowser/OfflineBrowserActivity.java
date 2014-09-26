@@ -1,11 +1,13 @@
 package com.nolanlawson.offlinebrowser;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -155,7 +157,7 @@ public class OfflineBrowserActivity extends Activity implements OnKeyListener, V
     inputEditText = (EditText) findViewById(R.id.inputEditText);
     webView = (WebView) findViewById(R.id.mainWebView);
     webView.getSettings().setJavaScriptEnabled(true);
-    //webView.getSettings().setDomStorageEnabled(true);
+    webView.getSettings().setDomStorageEnabled(true);
 
     inputEditText.setOnKeyListener(this);
     webView.setWebViewClient(new CustomWebViewClient());

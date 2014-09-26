@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 4
+    compileSdkVersion 8
     buildToolsVersion "20.0.0"
 
     defaultConfig {
         applicationId "com.nolanlawson.offlinebrowser"
-        minSdkVersion 3
-        targetSdkVersion 4
+        minSdkVersion 8
+        targetSdkVersion 8
     }
 
     buildTypes {
