@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:text="@string/browse"
+        android:textSize="18sp"
+        android:layout_margin="4dp"
+        android:id="@+id/browseButton"
+        />
+
 <EditText  
     android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:layout_alignBottom="@+id/browseButton"
+    android:layout_toLeftOf="@+id/browseButton"
+    android:textSize="18sp"
     android:singleLine="true"
     android:text=""
     android:hint="@string/inputHint"
@@ -15,11 +31,12 @@
     android:inputType="textUri"
     
     />
-    
-    <WebView 
-        android:layout_width="fill_parent" 
-    android:layout_height="0px"
-    android:layout_weight="1.0" 
-    android:id="@+id/mainWebView"
+
+
+    <WebView
+        android:layout_below="@+id/inputEditText"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/mainWebView"
     />
-</LinearLayout>
+</RelativeLayout>

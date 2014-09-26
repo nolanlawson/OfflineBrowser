@@ -6,10 +6,11 @@
     <string name="fileNotFound">File not found: %s</string>
     <string name="couldntLoadFile">Couldn\'t figure out how to handle file: %s</string>
     <string name="doesNotExist">Does Not Exist</string>
-    <string name="open">Open</string>
-    <string name="openFile">Open File</string>
+    <string name="open">Open&#8230;</string>
+    <string name="openFile">Choose HTML file</string>
     <string name="noSdCard">SD card not found.</string>
     <string name="history">History</string>
     <string name="aboutOfflineBrowser">About Offline Browser</string>
     <string name="about">About</string>
+    <string name="browse">Open&#8230;</string>
 </resources>
