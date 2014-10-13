@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="com.nolanlawson.offlinebrowser"
-      android:versionCode="7"
-      android:versionName="2.0.0">
+      android:versionCode="8"
+      android:versionName="2.0.1">
     <application android:icon="@drawable/ic_launcher_browser" android:label="@string/app_name">
         <activity android:name=".OfflineBrowserActivity"
                   android:label="@string/app_name"
@@ -21,5 +21,5 @@
 
     </application>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest> 
