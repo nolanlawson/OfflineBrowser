@@ -57,6 +57,8 @@ public class OfflineBrowserActivity extends Activity implements OnKeyListener, V
 
     setUpWidgets();
 
+    webView.setBackgroundColor(0x00000000);
+    webView.setLayerType(WebView.LAYER_TYPE_SOFTWARE, null);
     webView.requestFocus(); // prevents the soft keyboard from coming up
 
 

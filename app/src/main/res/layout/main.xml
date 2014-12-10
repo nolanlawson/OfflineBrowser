@@ -16,8 +16,8 @@
         android:id="@+id/browseButton"
         />
 
-<EditText  
-    android:layout_width="fill_parent" 
+<EditText
+    android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:layout_alignParentTop="true"
     android:layout_alignBottom="@+id/browseButton"
@@ -29,14 +29,30 @@
     android:id="@+id/inputEditText"
     android:imeOptions="actionGo"
     android:inputType="textUri"
-    
+
     />
 
 
-    <WebView
-        android:layout_below="@+id/inputEditText"
+    <FrameLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/mainWebView"
-    />
+        android:layout_below="@+id/inputEditText"
+        >
+
+
+        <ImageView android:layout_width="fill_parent"
+                   android:layout_height="fill_parent"
+                   android:src="@drawable/baby_bunny"/>
+
+        <WebView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@android:color/transparent"
+            android:id="@+id/mainWebView"
+            />
+
+
+        </FrameLayout>
+
+
 </RelativeLayout>
